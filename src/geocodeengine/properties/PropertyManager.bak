@@ -1,0 +1,63 @@
+package testthreading.properties;
+
+
+
+public final class PropertyManager {
+
+	//CONSTRUCTOR (PRIVATE)
+	private PropertyManager(){}
+	
+	//PROPERTIES
+	PropertyAccess propertyAccess;
+	private static String enableGeocode;
+	private static String mapQuestAPIKey;
+	private static int addressChunkSize = 0;
+	
+	
+	//KEY STRINGS
+	private static final String ENABLEGEOCODE = "ENABLEGEOCODE";
+	private static final String MAPQUESTAPIKEY = "MAPQUESTAPIKEY";
+	private static final String ADDRESSCHUNKSIZE = "ADDRESSCHUNKSIZE";
+	
+
+	
+	public static String GetEnableGeocode(){
+		
+		if (enableGeocode == null){
+			PropertyAccess propertyAccess = new PropertyAccess();
+			String value = propertyAccess.GetValue(ENABLEGEOCODE);
+			enableGeocode = value;
+		}
+		
+		return enableGeocode;
+	
+	}
+	
+	public static String GetMapQuestAPIKey(){
+		
+		if (mapQuestAPIKey == null){
+			PropertyAccess propertyAccess = new PropertyAccess();
+			String value = propertyAccess.GetValue(MAPQUESTAPIKEY);
+			mapQuestAPIKey = value;
+		}
+		
+		return mapQuestAPIKey;
+	
+	}
+	
+	public static int GetAddressChunkSize(){
+		
+		if (addressChunkSize == 0){
+			PropertyAccess propertyAccess = new PropertyAccess();
+			String value = propertyAccess.GetValue(ADDRESSCHUNKSIZE);
+			addressChunkSize = Integer.parseInt(value);
+		}
+		
+		return addressChunkSize;
+	
+	}
+	
+	
+}
+
+
